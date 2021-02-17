@@ -79,3 +79,56 @@ function fruitProcessors(apples, oranges) {
 }
 
 console.log(fruitProcessors(2, 3));
+
+
+// Arrays
+const friends1 = ['Lina', 'Pia', 'Chantal'];
+const friends2 = new Array('Lina', 'Pia');
+
+// retrieve element in array
+console.log(friends1[0]);
+// array length
+console.log(friends2.length);
+// retrieve last element in array
+console.log(friends2.length - 1);
+
+// mutate arrays
+friends1[2] = 'Linda';
+console.log(friends1);
+
+const ramona = ['Ramona', 'Maltan', 1995, friends1];
+console.log(ramona);
+
+// Exercise
+const calcAge = function(birthyear) {
+  return 2037 - birthyear;
+}
+
+const years = [1990, 1995, 1965, 2000];
+const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[2])]
+console.log(ages);
+
+// Basic Array Operations
+const friends = ['Lina', 'Pia', 'Chantal'];
+
+// add element to end of array
+friends.push('Jay');
+// add element to beginning of array
+friends.unshift('John');
+
+// remove element from end of array
+friends.pop();
+// remove element for beginning of array
+friends.shift();
+
+console.log(friends);
+
+// return index of an element
+friends.indexOf('Pia');
+
+// return boolean value checking if element exists in array
+friends.includes('Bob');
+// => false
+friends.includes('Pia');
+// => true
+

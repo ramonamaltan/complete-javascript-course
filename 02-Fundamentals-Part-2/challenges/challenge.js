@@ -1,5 +1,9 @@
+// FUNCTIONS CHALLENGE
 // Dolphins score 44, 23 and 71
 // Koalas score 65, 54 and 49
+// each team competes 3 times
+// calculate average of the 3 scores
+// win if min double the score of other team
 
 const calcAverage = (a, b, c) => (a + b + c) / 3;
 
@@ -18,6 +22,19 @@ const checkWinner = function(avgDolphins, avgKoalas) {
 
 checkWinner(scoreDolphins, scoreKoalas);
 
-// each team competes 3 times
-// calculate average of the 3 scores
-// win if min double the score of other team
+// ARRAY CHALLENGE
+// Tip Calculator:
+// if bill value between 50 and 300 -> 15% Tip
+// else 20% Tip
+
+const calcTip = function(billValue) {
+  if(billValue > 50 && billValue < 301) {
+    return billValue * 0.15
+  } else {
+    return billValue * 0.2
+  }
+}
+
+const bills = [125, 255, 44]
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])]
+console.log(tips)
