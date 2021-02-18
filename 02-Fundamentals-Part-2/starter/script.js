@@ -182,5 +182,60 @@ const ramonaNew = {
 ramonaNew.calcAge();
 ramonaNew.age;
 
+// ITERATIONS
+// for Loop keeps running while condition is true
+for(let rep = 1; rep <= 10; rep++) {
+  `Lifting weigths repetition ${rep}`;
+}
 
-// 
+const ramonaM = ['Ramona', 'Maltan', 1995, friends1];
+const types = [];
+
+for (let i = 0; i < ramonaM.length; i++) {
+  // console.log(ramonaM[i]);
+  types.push(typeof ramonaM[i]);
+}
+
+console.log(types);
+
+// continue and break statements
+// with continue exit the current iteration in the loop
+// with break exit the whole loop
+for (let i = 0; i < ramonaM.length; i++) {
+  if(typeof ramonaM[i] !== 'string') continue;
+  console.log(ramonaM[i])
+}
+
+for (let i = 0; i < ramonaM.length; i++) {
+  if(typeof ramonaM[i] === 'number') break;
+}
+
+// Looping Backwards
+for(let i = ramonaM.length - 1; i >= 0; i--) {
+  console.log(i, ramonaM[i])
+}
+
+// Loops in Loops
+for (let exercise = 1; exercise < 4; exercise++) {
+  console.log(`Starting exercise ${exercise}`);
+  for (let rep = 1; rep < 6; rep++) {
+    console.log(`Lifting weights rep ${rep}`);
+  }
+}
+
+// While Loop: runs while condition is true
+// doesn't need counter variables
+//use if you don't know how many time loop will run
+let rep = 1;
+while (rep <= 10) {
+  console.log(`Lifting weights rep ${rep}`);
+  rep++;
+}
+
+// randomn decimal number
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice != 6) {
+ console.log(`You rolled a ${dice}`);
+ dice = Math.trunc(Math.random() * 6) + 1;
+}

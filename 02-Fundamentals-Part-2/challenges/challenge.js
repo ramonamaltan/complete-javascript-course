@@ -67,3 +67,27 @@ if (john.calcBMI() > mark.calcBMI()) {
   console.log(`${mark.fullName}'s BMI (${mark.calcBMI()}), is higher than ${john.fullName}'s BMI ${john.calcBMI()}`)
 }
 
+// LOOPS CHALLENGE
+const bills2 = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+
+const tips2 = [];
+
+const calcTip2 = function(billValue) {
+  if(billValue > 50 && billValue < 301) {
+    return billValue * 0.15;
+  } else {
+    return billValue * 0.2;
+  }
+}
+
+for (i = 0; i < bills2.length; i++) {
+  tips2.push(calcTip2(bills2[i]));
+}
+
+const calcAvg = function(arr) {
+  sum = 0
+  for (i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}
