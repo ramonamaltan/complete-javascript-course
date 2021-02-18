@@ -132,3 +132,55 @@ friends.includes('Bob');
 friends.includes('Pia');
 // => true
 
+// OBJECTS: key-value pairs
+// order doesn't matter here
+const ramonaMaltan = {
+  firstName: 'Ramona',
+  lastName: 'Maltan',
+  birthYear: 1995,
+  friends: ['Lina', 'Pia', 'Chantal']
+}
+
+// retrieve data from objects
+// Dot Notation
+ramonaMaltan.lastName;
+// Bracket Notation
+ramonaMaltan['lastName'];
+const nameKey = 'Name'
+ramonaMaltan['first' + nameKey];
+ramonaMaltan['last' + nameKey];
+
+// add new properties to the object
+ramonaMaltan.location = 'Berlin'
+ramonaMaltan['location'] = 'Berlin'
+
+// Object Methods
+// add functions to Objects
+const ramonaNew = {
+  firstName: 'Ramona',
+  lastName: 'Maltan',
+  birthYear: 1995,
+  friends: ['Lina', 'Pia', 'Chantal'],
+  hasDriversLicense: true,
+  // calcAge: function(birthYear) {
+  //   return 2037 - birthYear;
+  // }
+
+  // reference the object itself to keep code DRY
+  // calcAge: function() {
+  //   return 2037 - this.birthYear;
+  // }  
+
+  // add age to Object
+  calcAge: function() {
+    this.age = 2037 - this.birthYear;
+    return this.age;
+  }  
+}
+
+// ramonaNew['calcAge'](1995);
+ramonaNew.calcAge();
+ramonaNew.age;
+
+
+// 
