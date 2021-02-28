@@ -61,3 +61,45 @@ var numProducts = 10;
 function deleteShoppingCart() {
   console.log("All products deleted")
 }
+
+// this keyword
+console.log(this); // window object
+
+const calcAge3 = function(birthYear) {
+  console.log(2037 - birthYear);
+  console.log(this);
+}
+calcAge3(1995); //undefined
+
+const calcAge4 = birthYear => {
+  console.log(2037 - birthYear);
+  console.log(this);
+}
+calcAge4(1997); //window object
+
+const jonas = {
+	name: 'Jonas',
+	year: 1989,
+	calcAge: function() {
+		console.log(this);
+	}
+}
+jonas.calcAge(); // jonas object {name: "Jonas", year: 1989, calcAge: ƒ}
+
+// primitives (nums, strings, booleans) vs. objects
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age); // 31
+console.log(oldAge); // 30
+
+const myself = {
+  name: 'Jonas',
+  age: 30
+};
+const friend = myself;
+friend.age = 27;
+
+console.log('Friend:', friend);
+console.log('Me', myself);
+// both ages 27
