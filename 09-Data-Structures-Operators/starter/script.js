@@ -31,6 +31,11 @@ const restaurant = {
 
   orderPasta: function(ing1, ing2, ing3) {
     console.log(`HEre is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+  },
+
+  orderPizza: function(mainIngredient, ...otherIng) {
+    console.log(mainIngredient);
+    console.log(otherIng);
   }
 };
 
@@ -129,3 +134,34 @@ console.log(letters);
 // Objects
 const newRestaurant = {...restaurant, founder: 'Guiseppe'};
 console.log(newRestaurant);
+
+// REST pattern and parameters
+// Spread because on right side of assignment operator
+const ar = [1, 2, ...[3, 4]];
+
+// REST, because on left side of =
+const [g, h, ...others] = [1, 2, 3, 4, 5];
+console.log(g, h, others);
+
+const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu]
+console.log(pizza, risotto, otherFood);
+
+// Obj
+const {sat, ...weekdays} = restaurant.openingHours;
+console.log(weekdays);
+
+// Functions [REST Parameters]
+const add = function(...numbers) {
+  let sum = 0;
+  for(let i = 0; i<numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+}
+add(2, 3);
+add(5, 7, 9, 11);
+
+const v = [22, 5, 8]
+add(...v);
+
+restaurant.orderPizza('mushrooms', 'cheese', 'artichoke');
