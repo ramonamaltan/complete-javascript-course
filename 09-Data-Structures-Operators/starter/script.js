@@ -28,6 +28,10 @@ const restaurant = {
       close: 24,
     },
   },
+
+  orderPasta: function(ing1, ing2, ing3) {
+    console.log(`HEre is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+  }
 };
 
 // Array Destructuring
@@ -95,3 +99,33 @@ console.log(menu, starters);
 const { fri: {open, close} } = openingHours;
 console.log(open, close);
 
+// Spread Operator
+const array = [7, 8, 9];
+const badNewArray = [1, 2, array[0], array[1], array[2]];
+console.log(badNewArray);
+
+const goodNewArray = [1, 2, ...array];
+console.log(goodNewArray);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+// copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// join arrays
+const wholeMenu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+// Iterables: arrays, strings, maps, sets, NOT Objects
+const jonas = 'Jonas';
+const letters = [...jonas];
+console.log(letters);
+
+// Real world example
+// const ingredients = [prompt('Let\'s make pasts! Ingredient 1?'), prompt('Let\'s make pasts! Ingredient 2?'), prompt('Let\'s make pasts! Ingredient 3?')];
+
+// restaurant.orderPasta(...ingredients);
+
+// Objects
+const newRestaurant = {...restaurant, founder: 'Guiseppe'};
+console.log(newRestaurant);
