@@ -165,3 +165,22 @@ const v = [22, 5, 8]
 add(...v);
 
 restaurant.orderPizza('mushrooms', 'cheese', 'artichoke');
+
+// Short Circuiting
+console.log(3 || 'ramona');
+
+// Practical Example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+// the nullish coalescing operator (??)
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+// Nullish values: null and undefined
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
