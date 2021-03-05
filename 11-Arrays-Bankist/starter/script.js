@@ -61,16 +61,70 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
 
+/////////////////////////////////////////////////
+// Array methods
+let arr = ['a' , 'b', 'c', 'd', 'e']
+
+// SLICE -> returns new array with extracted parts
+console.log(arr.slice(2)); // ['c', 'd', 'e']
+console.log(arr.slice(2, 4)); // ['c', 'd']
+console.log(arr.slice(-1)); // ['e']
+
+// create shallow copy of array
+console.log(arr.slice()); // ['a' , 'b', 'c', 'd', 'e']
+
+// SPLICE -> mutates the original array
+console.log(arr.splice(2)); // ['c', 'd', 'e']
+console.log(arr); // ['a', 'b']
+
+arr = ['a' , 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+
+// REVERSE -> mutates original array
+console.log(arr2.reverse()); //["f", "g", "h", "i", "j"]
+console.log(arr2); //["f", "g", "h", "i", "j"]
+
+// CONCAT
+const letters = arr.concat(arr2);
+console.log(letters);
+// same as (...arr, ...arr2)
+
+// foreach
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+movements.forEach(function(movement, i, arr) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+})
+
+// forEach on MAP
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+currencies.forEach(function(value, key, map) {
+  console.log(`${key}: ${value}`);
+})
 
-/////////////////////////////////////////////////
+// SET
+const currArr = Array.from(currencies.values());
+const currenciesUnique = new Set(currArr);
+console.log(currenciesUnique);
+
+currenciesUnique.forEach(function(value, _, map) {
+  console.log(`${value}`);
+})
