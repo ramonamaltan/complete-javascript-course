@@ -174,27 +174,156 @@ const max = movements2.reduce(function(acc, mov) {
 
 console.log(max);
 
-const dogs = [5, 2, 4, 1, 15, 8, 3]
-const calcAverageHumanAge = function(ages) {
-  const humanAge = ages.map(function(age) {
-    if (age <= 2) return 2* age;
-    else return 16 + age * 4;
-  })
-  console.log(humanAge);
-  const adults = humanAge.filter(age => age >= 18);
-  console.log(adults);
-  const average = adults.reduce((acc, age, i, arr) => acc + age/arr.length, 0);
-  console.log(average);
+// const dogs = [5, 2, 4, 1, 15, 8, 3]
+// const calcAverageHumanAge = function(ages) {
+//   const humanAge = ages.map(function(age) {
+//     if (age <= 2) return 2* age;
+//     else return 16 + age * 4;
+//   })
+//   console.log(humanAge);
+//   const adults = humanAge.filter(age => age >= 18);
+//   console.log(adults);
+//   const average = adults.reduce((acc, age, i, arr) => acc + age/arr.length, 0);
+//   console.log(average);
+// }
+// calcAverageHumanAge(dogs);
+
+// const totalDepositsUsd = movements2.filter(mov => mov > 0).map(mov => mov * euroUsd).reduce((acc, mov) => acc + mov, 0);
+// console.log(Math.round(totalDepositsUsd));
+
+// const calcAverageHumanAge2 = ages =>
+//   ages
+//     .map(age => (age <= 2) ? 2* age : 16 + age * 4)
+//     .filter(age => age >= 18)
+//     .reduce((acc, age, i, arr) => acc + age/arr.length, 0);
+
+// console.log(calcAverageHumanAge2(dogs));
+
+// find method
+// retrieve first element of an array based on a condition
+const firstWithdrwal = movements2.find(mov => mov < 0);
+console.log(movements2);
+console.log(firstWithdrwal);
+
+console.log(accounts);
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+
+// some and every
+const anyDeposits = movements2.some(mov => mov > 0);
+console.log(anyDeposits);
+
+// every element in the array must return true
+console.log(account4.movements.every(mov => mov > 0));
+
+// flat and flatMap
+const arr3 = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr3.flat());
+
+const arrDeep = [[[1, 2, 3], 4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+// sorting -> mutates array
+const owners = ['Jonas', 'Ramona', 'Anna', 'Martha'];
+console.log(owners.sort());
+
+movements2.sort((a, b) => {
+  if (a > b) {
+    return 1
+  } else {
+    return -1
+  }
+})
+console.log(movements2);
+
+// same as
+movements2.sort((a, b) => a - b);
+console.log(movements2);
+
+// create arrays
+const x = new Array(7); // created an array with 7 empty elements
+
+// fill(value, startIndex, endIndex)
+x.fill(1, 0, 3);
+x.fill(23, 3, 7);
+console.log(x);
+
+console.log(Array.from({length: 7}, () => 1)); // [1, 1, 1, 1, 1, 1, 1]
+
+const z = Array.from({length: 7}, (_, i) => i + 1)
+console.log(z); // [1, 2, 3, 4, 5, 6, 7]
+
+const diceRandom = Array.from({length: 100}, () => Math.trunc(Math.random()*6 + 1));
+console.log(diceRandom);
+
+const movementsUI = Array.from(document.querySelectorAll('.movements__value'));
+console.log(movementsUI);
+
+console.log(movementsUI.map(el => el.textContent.replace('€', '')))
+
+console.log([...document.querySelectorAll('.movements__value')]);
+
+// PRACTICE
+// 1.
+const bankDepositSum = accounts.flatMap(acc => acc.movements).filter(mov => mov > 0).reduce((sum, cur) => sum + cur, 0);
+console.log(bankDepositSum);
+
+// 2.
+// const numDeposits1000 = accounts.flatMap(acc => acc.movements).filter(mov => mov >= 1000).length;
+const numDeposits1000 = accounts.flatMap(acc => acc.movements).reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+console.log(numDeposits1000);
+
+let a = 10;
+console.log(a++); // still returns original a
+console.log(++a); // prefixed ++ operator returns a + 1
+
+// 3.
+// const {deposits2, withdrawls2} = accounts.flatMap(acc => acc.movements).reduce((sums, cur) => {cur > 0 ? sums.deposits2 += cur : sums.withdrawls2 += cur}, {deposits2: 0, withdrawls2: 0});
+// console.log(deposits2);
+
+// CHALLENGE #4
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+// 1.
+dogs.forEach(dog => dog.recommendedPortion = Math.round(dog.weight ** 0.75 * 28));
+console.log(dogs);
+
+// 2.
+const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
+console.log(dogSarah.recommendedPortion, dogSarah.curFood);
+if (dogSarah.curFood > dogSarah.recommendedPortion * 0.9 && dogSarah.curFood < dogSarah.recommendedPortion * 1.1) {
+  console.log('ok')
+} else if (dogSarah.curFood > dogSarah.recommendedPortion * 1.1) {
+  console.log('too much')
+} else {
+  console.log('too little')
 }
-calcAverageHumanAge(dogs);
 
-const totalDepositsUsd = movements2.filter(mov => mov > 0).map(mov => mov * euroUsd).reduce((acc, mov) => acc + mov, 0);
-console.log(Math.round(totalDepositsUsd));
+// 3.
+const ownersEatTooMuch = dogs.filter(dog => dog.curFood > dog.recommendedPortion * 1.1).flatMap(dog => dog.owners);
+const ownersEatTooLittle = dogs.filter(dog => dog.curFood < dog.recommendedPortion * 0.9).flatMap(dog => dog.owners);
+console.log(ownersEatTooLittle);
+console.log(ownersEatTooMuch);
 
-const calcAverageHumanAge2 = ages =>
-  ages
-    .map(age => (age <= 2) ? 2* age : 16 + age * 4)
-    .filter(age => age >= 18)
-    .reduce((acc, age, i, arr) => acc + age/arr.length, 0);
+// 4. 
+ownersEatTooMuch.forEach(owner => console.log(`${owner}'s dog eats too much`))
+ownersEatTooLittle.forEach(owner => console.log(`${owner}'s dog eats too little`))
 
-console.log(calcAverageHumanAge2(dogs));
+// 5.
+console.log(dogs.some(dog => dog.curFood === dog.recommendedPortion));
+
+// 6.
+console.log(dogs.some(dog => (dog.curFood > dog.recommendedPortion * 0.9 && dog.curFood < dog.recommendedPortion * 1.1)));
+
+// 7.
+const okayAmount = dogs.filter(dog => (dog.curFood > dog.recommendedPortion * 0.9 && dog.curFood < dog.recommendedPortion * 1.1));
+console.log(okayAmount);
+
+// 8.
+const dogsSorted = dogs.slice().sort((a, b) => a.recommendedPortion - b.recommendedPortion);
+console.log(dogsSorted);
